@@ -1,0 +1,5 @@
+---
+interface Props { number: string; title: string; description: string; accent: 'green' | 'blue' | 'dark'; }
+const { number, title, description, accent } = Astro.props;
+---
+<article class={`episode-card episode-card--${accent}`}><div class="episode-card__cover"><span class="brand-mark" aria-hidden="true"><i></i><b></b></span></div><div class="episode-card__body"><p>{number}</p><h3>{title}</h3><p>{description}</p><a href="#">Écouter <span aria-hidden="true">→</span></a></div></article>

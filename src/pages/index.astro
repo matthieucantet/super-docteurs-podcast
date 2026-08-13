@@ -1,0 +1,60 @@
+---
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import EpisodeCard from '../components/EpisodeCard.astro';
+import SectionTitle from '../components/SectionTitle.astro';
+import '../styles/global.css';
+
+const episodes = [
+  { number: 'Épisode 01', title: 'Burn-out en blouse blanche', description: 'Comprendre ce qui épuise les soignants et les chemins pour retrouver une pratique soutenable.', accent: 'green' },
+  { number: 'Épisode 02', title: 'Réinventer le soin', description: 'Des trajectoires qui remettent la relation, le temps et le sens au coeur de la médecine.', accent: 'blue' },
+  { number: 'Épisode 03', title: 'Prendre soin de ceux qui soignent', description: 'Quand la santé des professionnels devient une condition du soin de qualité.', accent: 'dark' },
+] as const;
+---
+
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content="Super Docteurs, le podcast qui donne la parole à celles et ceux qui soignent autrement." />
+    <title>Super Docteurs | Soigner, autrement</title>
+  </head>
+  <body>
+    <Header />
+    <main>
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="container hero__grid">
+          <div class="hero__content">
+            <p class="eyebrow eyebrow--light">Le podcast Super Docteurs</p>
+            <h1 id="hero-title">Des conversations pour soigner, autrement.</h1>
+            <p class="hero__intro">Un podcast pour écouter celles et ceux qui transforment la médecine de l'intérieur : soignants, patients, chercheurs et entrepreneurs engagés pour une santé plus humaine.</p>
+            <div class="hero__actions">
+              <a class="button button--light" href="#episodes">Écouter les épisodes <span aria-hidden="true">→</span></a>
+              <a class="text-link text-link--light" href="#newsletter">Recevoir les prochaines sorties <span aria-hidden="true">→</span></a>
+            </div>
+          </div>
+          <div class="hero__art" aria-hidden="true"><div class="hero__shape hero__shape--green"></div><div class="hero__shape hero__shape--blue"></div><p>SOIGNER,<br />AUTREMENT</p></div>
+        </div>
+      </section>
+      <section class="themes" aria-label="Thèmes du podcast"><div class="container themes__list"><span>Prendre soin des soignants</span><span>Récits de patients</span><span>Réinventer la pratique</span><span>Santé et société</span></div></section>
+      <section id="episodes" class="section container">
+        <SectionTitle eyebrow="À écouter" title="Les derniers épisodes" text="Des conversations franches pour faire évoluer notre rapport au soin, à la médecine et à celles et ceux qui les font vivre." />
+        <div class="episodes-grid">{episodes.map((episode) => <EpisodeCard {...episode} />)}</div>
+        <a class="text-link all-episodes" href="#">Voir tous les épisodes <span aria-hidden="true">→</span></a>
+      </section>
+      <section id="newsletter" class="newsletter"><div class="container newsletter__grid">
+        <SectionTitle eyebrow="La newsletter" title="Les conversations continuent entre deux épisodes." text="Une lettre occasionnelle avec les nouveaux épisodes, des idées à retenir et des ressources pour penser le soin autrement." />
+        <form class="signup-form" action="#" method="post"><label for="newsletter-email">Votre adresse e-mail</label><div class="signup-form__row"><input id="newsletter-email" name="email" type="email" placeholder="vous@exemple.com" required /><button class="button button--green" type="submit">Je m'inscris <span aria-hidden="true">→</span></button></div><p>Pas de bruit inutile. Désinscription possible à tout moment.</p></form>
+      </div></section>
+      <section id="suivre" class="section container follow">
+        <SectionTitle centered eyebrow="Suivre le podcast" title="Écoutez où vous voulez." text="Retrouvez chaque nouvel épisode sur votre plateforme préférée." />
+        <div class="platforms"><a href="#"><span class="platform-icon platform-icon--green">S</span>Spotify <b>↗</b></a><a href="#"><span class="platform-icon platform-icon--blue">A</span>Apple Podcasts <b>↗</b></a><a href="#"><span class="platform-icon platform-icon--dark">Y</span>YouTube <b>↗</b></a></div>
+      </section>
+      <section id="contact" class="contact"><div class="container contact__grid"><div><SectionTitle eyebrow="Contact" title="Une histoire à partager ?" text="Vous souhaitez participer au podcast, proposer un partenariat ou nous laisser un message ? Écrivez-nous quelques lignes." /><a class="text-link" href="mailto:bonjour@superdocteurs.fr">bonjour@superdocteurs.fr <span aria-hidden="true">↗</span></a></div>
+        <form class="contact-form" action="#" method="post"><div class="contact-form__two-cols"><label>Nom<input name="name" type="text" placeholder="Votre nom" /></label><label>E-mail<input name="email" type="email" placeholder="vous@exemple.com" /></label></div><label>Objet<input name="subject" type="text" placeholder="Invitation, partenariat, message..." /></label><label>Message<textarea name="message" rows="5" placeholder="Parlez-nous de votre projet ou de votre histoire."></textarea></label><button class="button button--blue" type="submit">Envoyer le message <span aria-hidden="true">→</span></button></form>
+      </div></section>
+    </main>
+    <Footer />
+  </body>
+</html>

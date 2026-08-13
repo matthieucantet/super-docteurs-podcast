@@ -1,0 +1,5 @@
+---
+interface Props { eyebrow: string; title: string; text: string; centered?: boolean; }
+const { eyebrow, title, text, centered = false } = Astro.props;
+---
+<div class:list={['section-title', { 'section-title--centered': centered }]}><p class="eyebrow">{eyebrow}</p><h2>{title}</h2><p>{text}</p></div>
