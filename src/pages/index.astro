@@ -1,62 +1,54 @@
 ---
-import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
-import EpisodeCard from '../components/EpisodeCard.astro';
+import Footer from '../components/Footer.astro';
 import SectionTitle from '../components/SectionTitle.astro';
+import { site } from '../data/site';
 import '../styles/global.css';
-import '../styles/brand.css';
-
-const episodes = [
-  { number: 'Épisode 01', title: 'Burn-out en blouse blanche', description: 'Comprendre ce qui épuise les soignants et les chemins pour retrouver une pratique soutenable.', accent: 'green' },
-  { number: 'Épisode 02', title: 'Réinventer le soin', description: 'Des trajectoires qui remettent la relation, le temps et le sens au coeur de la médecine.', accent: 'blue' },
-  { number: 'Épisode 03', title: 'Prendre soin de ceux qui soignent', description: 'Quand la santé des professionnels devient une condition du soin de qualité.', accent: 'dark' },
-] as const;
+const platforms = [{ name: 'Spotify', url: site.spotify }, { name: 'Apple Podcasts', url: site.apple }, { name: 'YouTube', url: site.youtube }];
 ---
-
 <!doctype html>
 <html lang="fr">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="description" content="Super Docteurs, le podcast qui donne la parole à celles et ceux qui soignent autrement." />
-    <link rel="icon" type="image/svg+xml" href="/brand-symbol.svg" />
-    <title>Super Docteurs | Soigner, autrement</title>
-  </head>
-  <body>
-    <Header />
-    <main>
-      <section class="hero" aria-labelledby="hero-title">
-        <div class="container hero__grid">
-          <div class="hero__content">
-            <p class="eyebrow eyebrow--light">Le podcast Super Docteurs</p>
-            <h1 id="hero-title">Des conversations pour soigner, autrement.</h1>
-            <p class="hero__intro">Un podcast pour écouter celles et ceux qui transforment la médecine de l'intérieur : soignants, patients, chercheurs et entrepreneurs engagés pour une santé plus humaine.</p>
-            <div class="hero__actions">
-              <a class="button button--light" href="#episodes">Écouter les épisodes <span aria-hidden="true">→</span></a>
-              <a class="text-link text-link--light" href="#newsletter">Recevoir les prochaines sorties <span aria-hidden="true">→</span></a>
-            </div>
-          </div>
-          <div class="hero__art" aria-hidden="true"><img class="hero__symbol" src="/brand-symbol.svg" alt="" /><p>SOIGNER,<br />AUTREMENT</p></div>
-        </div>
-      </section>
-      <section class="themes" aria-label="Thèmes du podcast"><div class="container themes__list"><span>Prendre soin des soignants</span><span>Récits de patients</span><span>Réinventer la pratique</span><span>Santé et société</span></div></section>
-      <section id="episodes" class="section container">
-        <SectionTitle eyebrow="À écouter" title="Les derniers épisodes" text="Des conversations franches pour faire évoluer notre rapport au soin, à la médecine et à celles et ceux qui les font vivre." />
-        <div class="episodes-grid">{episodes.map((episode) => <EpisodeCard {...episode} />)}</div>
-        <a class="text-link all-episodes" href="#">Voir tous les épisodes <span aria-hidden="true">→</span></a>
-      </section>
-      <section id="newsletter" class="newsletter"><div class="container newsletter__grid">
-        <SectionTitle eyebrow="La newsletter" title="Les conversations continuent entre deux épisodes." text="Une lettre occasionnelle avec les nouveaux épisodes, des idées à retenir et des ressources pour penser le soin autrement." />
-        <form class="signup-form" action="#" method="post"><label for="newsletter-email">Votre adresse e-mail</label><div class="signup-form__row"><input id="newsletter-email" name="email" type="email" placeholder="vous@exemple.com" required /><button class="button button--green" type="submit">Je m'inscris <span aria-hidden="true">→</span></button></div><p>Pas de bruit inutile. Désinscription possible à tout moment.</p></form>
-      </div></section>
-      <section id="suivre" class="section container follow">
-        <SectionTitle centered eyebrow="Suivre le podcast" title="Écoutez où vous voulez." text="Retrouvez chaque nouvel épisode sur votre plateforme préférée." />
-        <div class="platforms"><a href="#"><span class="platform-icon platform-icon--green">S</span>Spotify <b>↗</b></a><a href="#"><span class="platform-icon platform-icon--blue">A</span>Apple Podcasts <b>↗</b></a><a href="#"><span class="platform-icon platform-icon--dark">Y</span>YouTube <b>↗</b></a></div>
-      </section>
-      <section id="contact" class="contact"><div class="container contact__grid"><div><SectionTitle eyebrow="Contact" title="Une histoire à partager ?" text="Vous souhaitez participer au podcast, proposer un partenariat ou nous laisser un message ? Écrivez-nous quelques lignes." /><a class="text-link" href="mailto:bonjour@superdocteurs.fr">bonjour@superdocteurs.fr <span aria-hidden="true">↗</span></a></div>
-        <form class="contact-form" action="#" method="post"><div class="contact-form__two-cols"><label>Nom<input name="name" type="text" placeholder="Votre nom" /></label><label>E-mail<input name="email" type="email" placeholder="vous@exemple.com" /></label></div><label>Objet<input name="subject" type="text" placeholder="Invitation, partenariat, message..." /></label><label>Message<textarea name="message" rows="5" placeholder="Parlez-nous de votre projet ou de votre histoire."></textarea></label><button class="button button--blue" type="submit">Envoyer le message <span aria-hidden="true">→</span></button></form>
-      </div></section>
-    </main>
-    <Footer />
-  </body>
-</html>
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="canonical" href="https://superdocteurs.com/" /><meta name="description" content="Super Docteurs, le podcast de Matthieu Cantet pour soigner mieux et différemment. Découvrez le projet et les possibilités de partenariat." />
+  <link rel="icon" href="/brand-symbol.svg" type="image/svg+xml" />
+  <title>Super Docteurs — Soigner mieux, et différemment.</title>
+</head>
+<body>
+<a class="skip-link" href="#main">Aller au contenu</a>
+<Header />
+<main id="main">
+<section id="accueil" class="hero" aria-labelledby="hero-title"><div class="container hero__grid">
+  <div>
+  <h1 id="hero-title">Soigner,<br /><span>autrement</span></h1>
+  <p class="hero__intro">Des conversations qui ouvrent des perspectives sur la médecine. Pour celles et ceux qui veulent faire évoluer leur pratique, sans perdre le sens du soin.</p>
+  <div class="hero__actions"><a class="button button--blue" href="#suivre">Découvrir le podcast ↗</a><a class="text-link text-link--light" href="#partenaires">Devenir partenaire →</a></div>
+  <p class="hero__signature">Un podcast de <strong>Dr Matthieu Cantet</strong><br />médecin, créateur de Super Docteurs</p></div>
+  <figure class="hero-portrait"><img src="/matthieu-cantet.jpeg" width="1600" height="1600" alt="Matthieu Cantet, médecin et créateur du podcast Super Docteurs" fetchpriority="high" /><figcaption><span>Le regard d’un médecin.</span><strong>La curiosité d’un podcasteur.</strong></figcaption></figure>
+</div></section>
+<section id="podcast" class="section container podcast-spirit" aria-labelledby="spirit-title">
+<h2 id="spirit-title">L'esprit du podcast</h2>
+<div class="spirit-copy">
+<p class="spirit-lead"><strong>Médecins, soignants, reprenons le pouvoir sur notre métier!</strong></p>
+<p>Super Docteurs est le podcast qui réconcilie ce que la formation médicale a séparé: la science et l'humain, la technique et le sens, la rigueur et la liberté.</p>
+<p>Chaque épisode donne la parole à des médecins, des chercheurs et des penseurs qui soignent différemment, et avec exigence. Du concret, du terrain, de la profondeur.</p>
+<p>Si vous êtes généraliste, interne, spécialiste, infirmier, kinésithérapeute... ou soignant curieux de ce que la médecine peut devenir quand on ose la repenser: vous êtes chez vous ici.</p>
+<p class="spirit-promise"><strong>Plus de 200 épisodes, une seule promesse: vous aider à devenir un meilleur soignant.</strong></p>
+</div></section>
+<section id="suivre" class="section follow"><div class="container"><SectionTitle eyebrow="Écouter / regarder le podcast" title="Une conversation à emporter." text="Au cabinet, en déplacement ou entre deux journées : retrouvez Super Docteurs sur votre plateforme préférée." /><div class="platforms">{platforms.map((platform) => platform.url ? <a href={platform.url}>{platform.name}<b aria-hidden="true">↗</b></a> : <div class="platform-pending"><strong>{platform.name}</strong><span>Lien officiel à ajouter</span></div>)}</div></div></section>
+<section id="newsletter" class="newsletter" aria-labelledby="newsletter-title"><div class="container newsletter__grid">
+<div class="newsletter-copy"><h2 id="newsletter-title">Newsletter</h2>
+<p class="newsletter-name"><strong>Super Récap'</strong></p>
+<p>Chaque semaine, l'essentiel pour les médecins qui veulent soigner mieux, sans se noyer dans le bruit.</p>
+<p>Un épisode clé décortiqué. Un concept utile pour le cabinet. Un regard sur ce qui change vraiment la médecine.</p>
+<p>Pas de newsletters longues, pas de spam. Du concret, à utiliser dès demain avec ses patients, en 5 minutes de lecture.</p>
+<p><strong>C'est gratuit, c'est utile, ça prend 30 secondes.</strong></p>
+<a class="button button--blue" href={site.newsletter}>S’abonner à la newsletter ↗</a></div>
+</div></section>
+<section id="partenaires" class="section contact-simple" aria-labelledby="partners-title"><div class="container">
+<h2 id="partners-title">Partenariats</h2>
+<p>Vous partagez notre vision d'une médecine plus exigeante, plus humaine, plus libre?</p>
+<a class="button button--blue" href={`mailto:${site.email}`}>envoyer ma demande</a>
+</div></section>
+</main><Footer />
+</body></html>

@@ -1,4 +1,10 @@
 ---
-const links = [{ href: '#episodes', label: 'Les épisodes' }, { href: '#newsletter', label: 'La newsletter' }, { href: '#suivre', label: 'Écouter' }, { href: '#contact', label: 'Contact' }];
+const links = [
+  { href: '#accueil', label: 'Accueil' },
+  { href: '#podcast', label: "L'esprit du podcast" },
+  { href: '#suivre', label: 'Écouter / regarder le podcast' },
+  { href: '#newsletter', label: 'Newsletter' },
+  { href: '#partenaires', label: 'Partenariats' },
+];
 ---
-<header class="site-header"><nav class="container site-nav" aria-label="Navigation principale"><a class="brand" href="/" aria-label="Super Docteurs, accueil"><span class="brand-mark" aria-hidden="true"><img src="/brand-symbol.svg" alt="" /></span><span>SUPER<br />DOCTEURS</span></a><div class="site-nav__links">{links.map((link) => <a href={link.href}>{link.label}</a>)}</div><a class="button button--green site-nav__cta" href="#newsletter">S'abonner <span aria-hidden="true">→</span></a></nav></header>
+<header class="site-header"><nav class="container site-nav" aria-label="Navigation principale"><a class="brand" href="#accueil" aria-label="Super Docteurs, accueil"><img class="brand-logo" src="/logo-super-docteurs.png" width="854" height="300" alt="Super Docteurs" /></a><div class="site-nav__links">{links.map(link => <a href={link.href}>{link.label}</a>)}</div><details class="mobile-menu"><summary>Menu</summary><div>{links.map(link => <a href={link.href}>{link.label}</a>)}</div></details></nav></header>
