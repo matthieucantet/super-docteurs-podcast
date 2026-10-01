@@ -4,7 +4,12 @@ import Footer from '../components/Footer.astro';
 import SectionTitle from '../components/SectionTitle.astro';
 import { site } from '../data/site';
 import '../styles/global.css';
-const platforms = [{ name: 'Spotify', url: site.spotify }, { name: 'Apple Podcasts', url: site.apple }, { name: 'YouTube', url: site.youtube }];
+const platforms = [
+  { name: 'Spotify', url: site.spotify, icon: 'spotify' },
+  { name: 'Apple Podcasts', url: site.apple, icon: 'applepodcasts' },
+  { name: 'YouTube', url: site.youtube, icon: 'youtube' },
+  { name: 'Deezer', url: site.deezer, icon: 'deezer' },
+];
 ---
 <!doctype html>
 <html lang="fr">
@@ -35,7 +40,7 @@ const platforms = [{ name: 'Spotify', url: site.spotify }, { name: 'Apple Podcas
 <p>Si vous êtes généraliste, interne, spécialiste, infirmier, kinésithérapeute... ou soignant curieux de ce que la médecine peut devenir quand on ose la repenser: vous êtes chez vous ici.</p>
 <p class="spirit-promise"><strong>Plus de 200 épisodes, une seule promesse: vous aider à devenir un meilleur soignant.</strong></p>
 </div></section>
-<section id="suivre" class="section follow"><div class="container"><SectionTitle eyebrow="Écouter / regarder le podcast" title="Une conversation à emporter." text="Au cabinet, en déplacement ou entre deux journées : retrouvez Super Docteurs sur votre plateforme préférée." /><div class="platforms">{platforms.map((platform) => platform.url ? <a href={platform.url}>{platform.name}<b aria-hidden="true">↗</b></a> : <div class="platform-pending"><strong>{platform.name}</strong><span>Lien officiel à ajouter</span></div>)}</div></div></section>
+<section id="suivre" class="section follow"><div class="container"><SectionTitle eyebrow="Écouter / regarder le podcast" title="Une conversation à emporter." text="Au cabinet, en déplacement ou entre deux journées : retrouvez Super Docteurs sur votre plateforme préférée." /><div class="platforms">{platforms.map((platform) => <a class="platform-logo-link" href={platform.url} aria-label={`Retrouver Super Docteurs sur ${platform.name}`} title={platform.name}><img src={`/platforms/${platform.icon}.svg`} width="64" height="64" alt={platform.name} /><span aria-hidden="true">↗</span></a>)}</div></div></section>
 <section id="newsletter" class="newsletter" aria-labelledby="newsletter-title"><div class="container newsletter__grid">
 <div class="newsletter-copy"><h2 id="newsletter-title">Newsletter</h2>
 <p class="newsletter-name"><strong>Super Récap'</strong></p>
